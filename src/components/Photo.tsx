@@ -32,8 +32,15 @@ function fileExists(src: string) {
 }
 
 /**
- * Photos go through next/image so the GitHub Pages base path is applied
- * automatically — a plain <img src="/photos/..."> would 404 on a project site.
+ * With `output: "export"` and unoptimised images, next/image does NOT add the
+ * GitHub Pages base path to a src, so "/photos/x.jpg" would 404 on a project
+ * site served from /<repo>. Prefix it ourselves. Empty in local dev.
+ */
+export function withBase(src: string) {
+  return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${src}`;
+}
+
+/**
  * Images are unoptimised (see next.config.ts), so `fill` inside a fixed aspect
  * ratio box avoids needing intrinsic dimensions.
  */
@@ -67,7 +74,7 @@ export function PageBackground({
   return (
     <div aria-hidden="true" className="fixed inset-0 z-0 overflow-hidden">
       <Image
-        src={photo.src}
+        src={withBase(photo.src)}
         alt=""
         fill
         sizes="100vw"
@@ -113,7 +120,7 @@ export function Photo({
         className={`relative ${aspect} w-full overflow-hidden border border-line bg-cream/50 ${shapeClass}`}
       >
         <Image
-          src={photo.src}
+          src={withBase(photo.src)}
           alt={photo.alt}
           fill
           sizes={sizes}

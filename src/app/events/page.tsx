@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { wedding, type WeddingEvent } from "@/config/wedding";
 import { PageHeader } from "@/components/PageHeader";
 import { EventIcon } from "@/components/EventIcon";
-import { photoExists } from "@/components/Photo";
+import { photoExists, withBase } from "@/components/Photo";
 import Image from "next/image";
 
 /**
@@ -21,7 +21,7 @@ function EventPhoto({ slug, name }: { slug: string; name: string }) {
   return (
     <div className="relative aspect-[16/9] w-full border-b border-line">
       <Image
-        src={eventPhotoSrc(slug)}
+        src={withBase(eventPhotoSrc(slug))}
         alt={name}
         fill
         sizes="(max-width: 768px) 100vw, 700px"
