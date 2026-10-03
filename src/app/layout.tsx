@@ -34,6 +34,20 @@ export const metadata: Metadata = {
     title: `${couple} — ${wedding.weddingDateLabel}`,
     description: `${wedding.tagline}. Join us in ${wedding.city} on ${wedding.weddingDateLabel}.`,
     type: "website",
+    // Absolute URL: WhatsApp and friends will not resolve a relative one, and
+    // they ignore SVG favicons, so the preview needs a real raster image.
+    images: [
+      {
+        url: `${wedding.siteUrl}/og.jpg`,
+        width: 1200,
+        height: 630,
+        alt: `${couple} on a balcony`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [`${wedding.siteUrl}/og.jpg`],
   },
 };
 

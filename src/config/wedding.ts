@@ -35,6 +35,13 @@ export const wedding = {
   weddingDateLabel: "27 – 30 January 2027",
   city: "Raiganj, West Bengal",
 
+  /**
+   * Where the site is published, with no trailing slash. Link previews
+   * (WhatsApp etc.) need an absolute URL for the share image. Change this if
+   * you move to a custom domain.
+   */
+  siteUrl: "https://ketansuhaas.github.io/wedding-invite",
+
   /** Shown at the top of the home page and Getting There. */
   welcome: {
     heading: "We would love to have you there for all our special days!",
