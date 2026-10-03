@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { wedding, type WeddingEvent } from "@/config/wedding";
 import { PageHeader } from "@/components/PageHeader";
 import { EventIcon } from "@/components/EventIcon";
@@ -36,7 +35,7 @@ export const metadata: Metadata = { title: "Events" };
 
 /**
  * Several functions share a date — three fall on the 28th — so the schedule
- * reads as one block per day rather than a flat list of seven cards.
+ * reads as one block per day rather than a flat list of cards.
  * Consecutive events with the same dateLabel are grouped together.
  */
 function groupByDay(events: readonly WeddingEvent[]) {
@@ -60,7 +59,7 @@ export default function EventsPage() {
       <PageHeader
         eyebrow={`${wedding.events.length} functions`}
         title="Events"
-        intro={`Everything up to the Vidaai is in ${wedding.city}. Come to all of them or just the ones you can make.`}
+        intro={`Everything up to the Vidaai is in ${wedding.city}. We would love to have you there for all of them.`}
       />
 
       <section className="mx-auto max-w-3xl px-6 pb-24">
@@ -114,22 +113,6 @@ export default function EventsPage() {
               </ol>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 rounded-lg border border-line panel px-8 py-10 text-center">
-          <h2 className="font-display italic text-2xl text-gold">
-            Which ones can you make?
-          </h2>
-          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
-            Tick the functions you can come to on the RSVP form. It takes about a
-            minute.
-          </p>
-          <Link
-            href="/rsvp"
-            className="mt-8 inline-block rounded-full bg-gold/85 backdrop-blur-sm px-10 py-3.5 text-sm tracking-[0.15em] text-ivory uppercase transition-colors hover:bg-ink/85"
-          >
-            RSVP
-          </Link>
         </div>
       </section>
     </>

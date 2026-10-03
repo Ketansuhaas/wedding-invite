@@ -10,7 +10,6 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/events", label: "Events" },
   { href: "/travel", label: "Getting There" },
-  { href: "/rsvp", label: "RSVP" },
 ];
 
 export function Nav() {

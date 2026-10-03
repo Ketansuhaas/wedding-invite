@@ -35,24 +35,23 @@ export default function Home() {
             </p>
           </div>
 
-          {/* The two calls to action, kept apart from the invitation so the
-              names are not competing with buttons. The countdown lives in the
-              header bar rather than here. */}
-          <div className="rounded-2xl border border-line/60 panel px-6 py-8 text-center md:px-12">
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/rsvp"
-                className="w-full rounded-full bg-gold/85 px-10 py-3.5 text-sm tracking-[0.15em] text-ivory uppercase backdrop-blur-sm transition-colors hover:bg-ink/85 sm:w-auto"
-              >
-                RSVP
-              </Link>
-              <Link
-                href="/events"
-                className="w-full rounded-full border border-gold panel px-10 py-3.5 text-sm tracking-[0.15em] text-gold uppercase transition-colors hover:bg-gold/85 hover:text-ivory sm:w-auto"
-              >
-                See the events
-              </Link>
-            </div>
+          {/* Welcome: the invitation to every function, and what is provided. */}
+          <div className="rounded-2xl border border-line/60 panel px-6 py-10 text-center md:px-12">
+            <h2 className="font-display italic text-2xl text-ink md:text-3xl">
+              {wedding.welcome.heading}
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-muted">
+              {wedding.welcome.body}
+            </p>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted">
+              {wedding.welcome.provided}
+            </p>
+            <Link
+              href="/events"
+              className="mt-8 inline-block rounded-full border border-gold panel px-10 py-3.5 text-sm tracking-[0.15em] text-gold uppercase transition-colors hover:bg-gold/85 hover:text-ivory"
+            >
+              See the events
+            </Link>
           </div>
         </div>
       </section>
@@ -69,8 +68,8 @@ export default function Home() {
               The celebrations
             </h2>
             <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
-              {wedding.events.length} functions over {dayCount} days. Come to
-              all of them, or just the ones you can make.
+              {wedding.events.length} functions over {dayCount} days, and we
+              would love you there for each one of them.
             </p>
           </div>
 
@@ -106,22 +105,17 @@ export default function Home() {
 
       {/* --------------------------------------------------------- signpost */}
       <section className="mx-auto max-w-5xl px-6 py-20">
-        <div className="grid overflow-hidden rounded-2xl border border-line panel sm:grid-cols-3">
+        <div className="grid overflow-hidden rounded-2xl border border-line panel sm:grid-cols-2">
           {[
             {
               href: "/events",
               title: "Events",
-              body: "Times and venues for all seven functions.",
+              body: "Times for all the functions.",
             },
             {
               href: "/travel",
               title: "Getting There",
-              body: "Flights, trains, hotels and directions.",
-            },
-            {
-              href: "/rsvp",
-              title: "RSVP",
-              body: "Let us know if you can make it.",
+              body: "Flights, trains, stay and directions.",
             },
           ].map((card) => (
             <Link

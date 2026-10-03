@@ -26,14 +26,11 @@ export function Footer() {
           </span>
         </div>
 
-        <p className="text-sm text-muted">
-          Questions? Call or WhatsApp {wedding.contactName} on{" "}
-          <a
-            href={`tel:${wedding.contactPhone.replace(/\s/g, "")}`}
-            className="text-ink underline decoration-line underline-offset-4 transition-colors hover:text-gold"
-          >
-            {wedding.contactPhone}
-          </a>
+        <p className="mx-auto max-w-md text-sm leading-relaxed text-muted">
+          {wedding.contacts.blurb}
+        </p>
+        <p className="mt-6 font-display italic text-2xl text-gold">
+          See you there!!
         </p>
       </div>
     </footer>

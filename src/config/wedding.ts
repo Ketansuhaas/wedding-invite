@@ -35,12 +35,22 @@ export const wedding = {
   weddingDateLabel: "27 – 30 January 2027",
   city: "Raiganj, West Bengal",
 
-  // TODO: the date you want replies by.
-  rsvpDeadlineLabel: "31 December 2026",
+  /** Shown at the top of the home page and Getting There. */
+  welcome: {
+    heading: "We would love to have you there for all our special days!",
+    body: "Having successfully lived out of suitcases across multiple cities (and a few time zones), we’re officially calling a timeout to eat, celebrate, and make memories with family. And we definitely can’t do it without you!",
+    provided:
+      "We’ve got your accommodation and food covered, so all you need to do is show up with your most colorful outfits and your best party energy.",
+  },
 
-  contactName: "Ketan",
-  contactPhone: "+91 96008 29658",
-  contactEmail: "ketan@example.com", // TODO
+
+  /** Triparna first — she will have the faster, more accurate answers. */
+  contacts: {
+    primary: "Triparna",
+    secondary: "Ketan",
+    blurb:
+      "Questions? Ask Triparna or Ketan. Try Triparna first if you would like answers that are fast and actually correct. Ketan will cheerfully do his best.",
+  },
 
   // --------------------------------------------------------------- photos
   // Drop the files into public/photos/ using exactly these names.
@@ -61,12 +71,24 @@ export const wedding = {
 
   // ---------------------------------------------------------------- events
   // Everything except the Reception is in Raiganj; the Reception is in
-  // Pondicherry, five days later.
+  // Pondicherry, after the Vidaai.
   //
   // TODO: fill in the venue names and addresses — they all say TODO below.
-  // Add or remove entries freely; the Events page, the home page summary and
-  // the RSVP checkboxes all read from this one list.
+  // Add or remove entries freely; the Events page and the home page summary
+  // read from this one list.
   events: [
+    {
+      slug: "ashirvaad",
+      name: "Ashirvaad",
+      start: "2027-01-27T18:00:00+05:30",
+      dateLabel: "Wednesday, 27 January 2027",
+      timeLabel: "6:00 PM onwards",
+      venue: "TODO: venue name",
+      address: "Raiganj, West Bengal",
+      mapsUrl: "https://maps.google.com/?q=Raiganj+West+Bengal",
+      description:
+        "The couple are blessed by all the elders of the family before starting this journey.",
+    },
     {
       slug: "mehendi",
       name: "Mehendi",
@@ -121,7 +143,7 @@ export const wedding = {
       venue: "TODO: venue name",
       address: "Raiganj, West Bengal",
       mapsUrl: "https://maps.google.com/?q=Raiganj+West+Bengal",
-      description: "The main event. Dinner follows the ceremony.",
+      description: "The main event.",
     },
     {
       slug: "vidaai",
@@ -144,7 +166,7 @@ export const wedding = {
       address: "Pondicherry",
       mapsUrl: "https://maps.google.com/?q=Pondicherry",
       description:
-        "In Pondicherry, five days after the wedding — a separate trip, and a very long photo queue.",
+        "In Pondicherry, after the Raiganj celebrations — and a very long photo queue.",
     },
   ] as WeddingEvent[],
 
@@ -153,6 +175,13 @@ export const wedding = {
     intro:
       "Raiganj is in north Bengal, and getting here takes a little planning. Here is everything you need.",
 
+    /** The Raiganj pin — opens straight into Google Maps. */
+    location: {
+      name: "Raiganj, West Bengal",
+      coordinates: "25.6167° N, 88.1167° E",
+      mapsUrl: "https://www.google.com/maps?q=25.6167,88.1167",
+    },
+
     /**
      * The Reception is in Pondicherry, right across the country from the rest
      * of the functions — flagged separately so nobody books one trip assuming
@@ -160,20 +189,20 @@ export const wedding = {
      */
     secondCity: {
       heading: "The Reception is in Pondicherry",
-      body: "Everything from the Mehendi to the Vidaai is in Raiganj. The Reception on 2 February is in Pondicherry, roughly 2,000 km south — a separate journey and a separate booking. Most guests come to one or the other, and we would be glad to see you at either.",
+      body: "Everything from the Ashirvaad to the Vidaai is in Raiganj. The Reception on 2 February is in Pondicherry, roughly 2,000 km south, so it is a separate journey and a separate booking. We would love to celebrate with you there too.",
     },
 
     /** Shown as a highlighted notice at the top of the Getting There page. */
     arriveBy: {
       heading: "Please arrive by the morning of Wednesday, 27 January",
-      body: "The Mehendi starts that evening, so aim to land at Purnea by Wednesday morning at the latest. Flights into Purnea are limited, so book early — and tell us your arrival time so we can arrange a pickup.",
+      body: "The celebrations begin that evening with the Ashirvaad, so aim to land at Purnea by Wednesday morning at the latest. Flights into Purnea are limited, so book early, and tell Triparna or Ketan your arrival time so we can arrange a pickup.",
     },
 
     // TODO: please double-check these distances and journey times before you
     // share the site — they are good-faith estimates, not verified.
     byAir: {
       name: "Purnea Airport, Bihar",
-      note: "The closest airport, roughly 2 to 2.5 hours from Raiganj by road. Flights are limited, so book well ahead. Bagdogra (IXB) is the larger alternative at about 4 hours away.",
+      note: "The closest airport, roughly 2 hours from Raiganj by road. Flights are limited, so book well ahead. Bagdogra (IXB) is the larger alternative at about 3 hours away.",
     },
     byRail: {
       name: "Raiganj Station",
@@ -184,49 +213,17 @@ export const wedding = {
       note: "About 10 to 11 hours from Kolkata via NH12 and NH27. Comfortable as an overnight drive, or break the journey at Malda.",
     },
 
-    // TODO: add the hotels once you have blocked rooms.
-    hotels: [
-      {
-        name: "TODO: hotel name",
-        note: "Add the hotel, the rate, and the date guests need to book by.",
-        url: "",
-      },
-    ],
+    stay: {
+      heading: "Where to stay",
+      body: "Your stay is taken care of. We will be there to welcome you at the hotel once you reach.",
+    },
 
     localTips: [
-      "Tell us your arrival date and time and we will arrange a pickup from Purnea.",
+      "Tell Triparna or Ketan your arrival date and time and we will arrange a pickup from Purnea.",
       "Late January in north Bengal is properly cold in the mornings and evenings — bring layers.",
-      "App cabs are unreliable in Raiganj. Let us organise local transport for you rather than booking your own.",
+      "App cabs are unavailable in Raiganj. Local transportation will be arranged for you at all times.",
     ],
   },
-
-  // ------------------------------------------------------------------ faqs
-  faqs: [
-    {
-      q: "When do I need to arrive?",
-      a: "By the morning of Wednesday 27 January at the latest — the Gaye Holud begins that day. Fly into Purnea if you can.",
-    },
-    {
-      q: "Do I have to come to every event?",
-      a: "Not at all. Tick whichever functions you can make in the RSVP form. The reception on 2 February is a separate trip, so plenty of people will come to one and not the other.",
-    },
-    {
-      q: "Can I bring a plus one?",
-      a: "Please tell us in the RSVP form how many people are coming with you, and we will make room.",
-    },
-    {
-      q: "Are children welcome?",
-      a: "Absolutely. Just include them in your party count so we can plan the catering.",
-    },
-    {
-      q: "How do I get from the airport to Raiganj?",
-      a: "Tell us your flight details in the RSVP form and we will sort out a pickup. It is about a 2 hour drive.",
-    },
-    {
-      q: "What about gifts?",
-      a: "Your presence is genuinely the whole point, especially given how far most of you are travelling.",
-    },
-  ],
 } as const;
 
 export type Wedding = typeof wedding;

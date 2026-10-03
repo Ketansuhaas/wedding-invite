@@ -32,6 +32,16 @@ function Mehendi() {
   );
 }
 
+/** Ashirvaad — a lit diya, for the elders' blessing. */
+function Ashirvaad() {
+  return (
+    <>
+      <path d="M3.6 14.4h16.8a8.4 8.4 0 0 1-16.8 0Z" {...stroke} />
+      <path d="M12 12.4c-2.2-1.6-2.4-4.2 0-7 2.4 2.8 2.2 5.4 0 7Z" {...stroke} />
+    </>
+  );
+}
+
 /** Haldi — a bowl of turmeric with two sprigs. */
 function Haldi() {
   return (
@@ -186,6 +196,7 @@ export function TravelIcon({
 }
 
 const MOTIFS: Record<string, () => React.ReactElement> = {
+  ashirvaad: Ashirvaad,
   mehendi: Mehendi,
   haldi: Haldi,
   engagement: Engagement,
