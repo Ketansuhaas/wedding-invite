@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Warm ivory ground, cream panels, antique gold for anything that should
+     catch the eye. Kept deliberately narrow so the site reads as one piece. */
+  --color-ivory: #fdfaf4;
+  --color-cream: #f5efe2;
+  --color-ink: #33302a;
+  /* Deepened from the original brighter gold so headings hold their own
+     against the ivory ground rather than washing into it. */
+  --color-muted: #6e6759;
+  --color-gold: #8a6a2c;
+  --color-goldlight: #b08f4a;
+  --color-line: #e2d8c2;
+
+  --font-display: var(--font-display), Georgia, serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Frosted panel.
+   Text sits on top of the background photograph, so it needs something behind
+   it — but a flat white box would kill the photo and fall out of the palette.
+   This is a warm ivory tint plus a backdrop blur: the photograph still reads
+   through it, softened, while the text stays crisp.
+   Tune legibility here once rather than per component. */
+.panel {
+  background-color: color-mix(in srgb, var(--color-ivory) 76%, transparent);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+}
+
+/* Slightly lighter, for large blocks that would otherwise feel heavy. */
+.panel-soft {
+  background-color: color-mix(in srgb, var(--color-cream) 55%, transparent);
+  backdrop-filter: blur(10px) saturate(110%);
+  -webkit-backdrop-filter: blur(10px) saturate(110%);
+}
+
+/* A hairline rule with a diamond in the middle — separates sections without
+   shouting. */
+.rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-line);
+}
+.rule::before,
+.rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
